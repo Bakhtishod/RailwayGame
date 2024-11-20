@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kingdom's Railway Network</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container" id="menuContainer">
+    <img src="/assets/images/screen/title.png" alt="RAILWAYS" class="title">
+    <div class="input-box">
+        <input type="text" id="username" placeholder="Who are you?">
+    </div>
+    <div class="main-section">
+        <div class="difficulty">
+            <p class="difficulty-title">Set the Difficulty!</p>
+            <div class="difficulty-buttons">
+                <button id="easy" class="difficulty-button">5 x 5 (Easy)</button>
+                <button id="hard" class="difficulty-button">7 x 7 (Hard)</button>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button class="rules">Rules</button>
+            <button class="start-game">Start Game</button>
+        </div>
+    </div>
+</div>
+
+<div class="game-container" id="gameContainer">
+    <div class="game-info">
+        <img src="/assets/images/screen/title.png" alt="RAILWAYS" class="game-title">
+        <div class="game-stats">
+            <p>ROUTE DESIGNER: <span id="designerName"></span></p>
+            <p>ELAPSED TIME: <span id="timer">0:00</span></p>
+        </div>
+        <h2 id="optionsTitle" class="options-title">Options</h2>
+        <div id="cellOptionsContainer" class="cell-options-container">
+        </div>
+        <button id="mainBackButton" class="back-to-menu">Back to main menu</button>
+        <button id="leaderBoardButton" class="leaderboard">Leaderboard</button>
+    </div>
+    <div class="game-board">
+    </div>
+</div>
+
+<div id="errorPopup" class="popup-message">
+    <p id="errorMessage">Error message</p>
+</div>
+
+<div id="winPopup" class="popup-message">
+    <h2 id="winMessage">Result</h2>
+    <p id="timeTaken">Time taken: 0:00</p>
+    <button id="restartButton">Restart</button>
+    <button id="backButton">Back to main menu</button>
+</div>
+
+<div id="leaderboardPopup" class="popup">
+    <span class="close" onclick="closeLeaderboardPopup()">&times;</span>
+    <div class="popup-content">
+        <h2>Full Leaderboard</h2>
+        <div id="leaderboardContent">
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+<div id="rulesPopup" class="popup">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <div class="popup-content">
+        <h1>The Kingdom's Railway Network</h1>
+        <div class="animated-text">
+            <h2>Overview</h2>
+            <p>
+                The game is played on a square grid of various sizes, where the goal is to create a continuous circular
+                railway line that reaches every place where the train can travel.
+            </p>
+            <p>Several different types of terrain tiles are visible on the map at the start of the game:</p>
+            <div class="terrain-section">
+                <div class="terrain-item">
+                    <img src="/assets/images/tiles/empty.png" alt="Empty Cell">
+                    <p>In this cell, the railway can continue in any of the three directions besides the entry
+                        direction.</p>
+                </div>
+                <div class="terrain-item">
+                    <img src="/assets/images/tiles/bridge.png" alt="Bridge Tile">
+                    <p>On this tile, the railway can only be built in the straight direction defined by the bridge.</p>
+                </div>
+                <div class="terrain-item">
+                    <img src="/assets/images/tiles/mountain.png" alt="Mountain Tile">
+                    <p>These tiles have rocks that block two adjacent exits, so the train can only continue by turning
+                        90°.</p>
+                </div>
+                <div class="terrain-item">
+                    <img src="/assets/images/tiles/oasis.png" alt="Oasis Tile">
+                    <p>No railway can be built on this tile.</p>
+                </div>
+            </div>
+            <h2>End of the Game</h2>
+            <p>
+                The game ends when the player correctly completes the puzzle according to the given rules.
+            </p>
+            <ul>
+                <li>Each cell has two exit points, and the train can enter each neighboring cell from the correct
+                    direction.
+                </li>
+                <li>Every cell that needs to be touched is touched.</li>
+                <li>Every cell where no track can be placed remains empty.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<img src="/assets/images/screen/rail.png" alt="Rail Track" class="rail-track" id="railTrack">
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
